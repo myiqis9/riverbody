@@ -8,31 +8,43 @@
 
     <!-- CSS stylesheet(s) -->
     <link rel="stylesheet" type="text/css" href="style.css" />
-
-    <!-- Library script(s) -->
-
-    <!-- My script(s) -->
-    <script src="js/script.js"></script>
   </head>
 
   <body>
-      <div id="img"></div> <!-- image -->
+      <div id="media">
+        <img id="img" src="images/1a.jpg">
+        <video id="video" autoplay loop muted>
+          <source src="images/1b.mp4" type="video/mp4">
+        </video>
+    </div> <!-- image -->
 
       <div class="test">
-        <h2 id="question">MAN OR RIVER?</h2> <!-- question -->
+        <h2 id="title">MAN OR RIVER?</h2> <!-- question -->
 
         <!-- if answer is selection -->
         <div id="answer-btns">
-          <button class="btn">MAN</button>
-          <button class="btn">RIVER</button>
+          <button class="btn hover">MAN</button>
+          <button class="btn hover">RIVER</button>
         </div>
 
         <!-- if answer is drag -->
         <div id="answer-drag">
-
+          <div id="left"></div>
+          <div id="right"></div>
+          <div id="bottom">
+            <button class="drag" id="man" draggable="true">MAN</button>
+            <button class="drag" id="river" draggable="true">RIVER</button>
+          </div>
         </div>
+
+        <!-- if interlude -->
+        <p id="interlude">This is interlude text.</p>
+
+        <button id="next">NEXT</button>
       </div>
 
+    <!-- My script(s) -->
+    <script src="script.js"></script>
   </body>
   
 </html>
