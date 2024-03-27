@@ -64,7 +64,7 @@ const questions = [
         interlude: false,
         img: 'images/6a.jpg',
         vid: 'images/6b.mp4',
-        answers: ['RIVER', 'MAN'] //DRAG QUESTION
+        answers: ['river', 'man'] //DRAG QUESTION
     },
     { //8
         interlude: true,
@@ -116,11 +116,13 @@ leftright.forEach(el =>{
         const droppedID = event.dataTransfer.getData("text/plain");
         const dropEl = document.getElementById(droppedID);
         el.appendChild(dropEl);
+
+        checkDrop();
     });
 });
 
 function start() {
-    active = 5; //TESTING
+    active = 0; //TESTING
     score = 0;
     activeQuestion();
 }
@@ -178,6 +180,35 @@ function setUpDrag() {
     answersEl.style.display = "none";
     dragboxEl.style.display = "block";
     nextEl.style.visibility = "hidden";
+    interEl.style.visibility = 'hidden';
+    imageEl.src = questions[active].img;
+    videoEl.src = questions[active].vid;
+    videoEl.load();
+    videoEl.pause();
+}
+
+function checkDrop() {
+    if(leftEl.firstChild && rightEl.firstChild) {
+        console.log('checking');
+        if(leftEl.firstChild.id == questions[active].answers[0] &&
+            rightEl.firstChild.id == questions[active].answers[1]) {
+                score++;
+                document.getElementById("man").classList.add("correct");
+                document.getElementById("river").classList.add("correct");
+            }
+        else {
+            document.getElementById("man").classList.add("incorrect");
+            document.getElementById("river").classList.add("incorrect");
+        }
+
+        imageEl.style.visibility = "hidden";
+        videoEl.style.visibility = "visible";
+        videoEl.play();
+
+        setTimeout(() => {
+            nextEl.style.visibility = "visible";
+        }, 4000);
+    }
 }
 
 function setupNext() {
