@@ -229,7 +229,7 @@ function activeInterlude() {
     videoEl.play();
 
     titleEl.style.display = "block";
-    titleEl.style.innerText = questions[active].title;
+    titleEl.innerText = questions[active].title;
     answersEl.style.visibility = "hidden";
     interEl.style.visibility = "visible";
     interEl.innerText = questions[active].desc;
